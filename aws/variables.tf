@@ -16,7 +16,7 @@ variable "subnets" {
 
 variable "ami" {
   type =  string
-  default = "ami-02f7c3a0c32f3f59e"
+  default = "BOTTLEROCKET_x86_64"
 }
 
 variable "instance_type" {
