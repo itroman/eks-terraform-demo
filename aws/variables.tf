@@ -4,24 +4,6 @@ variable "region" {
   description = "value of the region where the resources will be created"
 }
 
-variable "bucket" {
-  type = string
-  default = "demo-2025-07-23-bucket"
-  description = "name of bucket where tf state is stored"
-}
-
-variable "key" {
-  type = string
-  default = "demo/terraform.tfstate"
-  description = "key value for storing tf state in dynamodb"
-}
-
-variable "dynamodb_table"  {
-  type = string
-  default = "demo_tf_lockid"
-  description = "name of dynamodb table"
-}
-
 variable "cluster_name" {
   type = string
   default = "demo_cluster"

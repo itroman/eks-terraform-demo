@@ -11,10 +11,10 @@ terraform {
   }
 
 	backend "s3" {
-    bucket         = var.bucket
-    key            = var.key
-    region         = var.region
+    bucket         = "demo-2025-07-23-bucket"
+    key            = "demo/terraform.tfstate"
+    region         = "us-east-2"
     encrypt        = true
-    dynamodb_table = var.dynamodb_table
+    dynamodb_table = "demo_tf_lockid"
   }
 }
