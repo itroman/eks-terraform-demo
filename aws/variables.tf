@@ -23,3 +23,23 @@ variable "instance_type" {
   type = string
   default = "t2.medium"
 }
+
+variable "kube_proxy" {
+  type = string
+  default = "v1.33.0-eksbuild.2"
+}
+
+variable "core_dns" {
+  type = string
+  default = "v1.12.2-eksbuild.4"
+}
+
+variable "ebs_csi" {
+  type = string
+  default = "v1.17.0-eksbuild.1"
+}
+
+variable "vpc_cni" {
+  type = string
+  default = "v1.19.5-eksbuild.3"
+}
