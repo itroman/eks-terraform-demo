@@ -13,7 +13,7 @@ terraform {
 	backend "s3" {
     bucket         = "demo-2025-07-23-bucket"
     key            = "demo/terraform.tfstate"
-    region         = "us-east-2"
+    region         = "us-east-1"
     encrypt        = true
     dynamodb_table = "demo_tf_lockid"
   }
