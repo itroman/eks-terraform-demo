@@ -1,0 +1,48 @@
+name: Terraform Lint and Format
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: 'Terraform Lint and Format'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.12.2
+
+      - name: Install TFLint
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_tflint.sh | bash
+          sudo mv tflint /usr/local/bin/
+
+      - name: Terraform Format Check
+        id: fmt
+        run: terraform fmt -check -recursive
+        continue-on-error: true
+
+      - name: Terraform TFLint Check
+        id: tflint
+        run: tflint --enable-rule=terraform_standard --enable-rule=terraform_sensitive_attributes --enable-rule=terraform_naming_conventions # Example rules, customize as needed
+        continue-on-error: true
+
+      - name: Report Formatting Issues
+        if: ${{ steps.fmt.outcome == 'failure' }}
+        run: |
+          echo "Terraform formatting issues detected. Please run 'terraform fmt' locally."
+          exit 1 # Fail the job if formatting issues are present
+
+      - name: Report TFLint Issues
+        if: ${{ steps.tflint.outcome == 'failure' }}
+        run: |
+          echo "TFLint issues detected. Please address the reported linting errors."
+          exit 1 # Fail the job if linting issues are present
