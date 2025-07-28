@@ -8,7 +8,7 @@ resource "aws_db_instance" "production" {
   copy_tags_to_snapshot                 = "false"
   customer_owned_ip_enabled             = "false"
   db_name                               = "application"
-  db_subnet_group_name                  = "${aws_db_subnet_group.application.name}"
+  db_subnet_group_name                  = aws_db_subnet_group.application.name
   dedicated_log_volume                  = "false"
   deletion_protection                   = "true"
   engine                                = "postgres"
@@ -49,7 +49,7 @@ resource "aws_db_instance" "production-gpdb" {
   copy_tags_to_snapshot                 = "false"
   customer_owned_ip_enabled             = "false"
   db_name                               = "application"
-  db_subnet_group_name                  = "${aws_db_subnet_group.application.name}"
+  db_subnet_group_name                  = aws_db_subnet_group.application.name
   dedicated_log_volume                  = "false"
   deletion_protection                   = "true"
   engine                                = "postgres"

@@ -7,7 +7,7 @@ resource "aws_subnet" "subnet_3" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "${var.availability_zone_1}"
+  availability_zone                              = var.availability_zone_1
 
   tags = {
     Name                                      = "${var.project_tag}-vpc-private-${var.availability_zone_1}"
@@ -21,7 +21,7 @@ resource "aws_subnet" "subnet_3" {
     "kubernetes.io/role/internal-elb"         = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_7" {
@@ -33,7 +33,7 @@ resource "aws_subnet" "subnet_7" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "${var.availability_zone_1}"
+  availability_zone                              = var.availability_zone_1
 
   tags = {
     Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
@@ -47,7 +47,7 @@ resource "aws_subnet" "subnet_7" {
     "kubernetes.io/role/elb"                  = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_6" {
@@ -59,7 +59,7 @@ resource "aws_subnet" "subnet_6" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "${var.availability_zone_1}"
+  availability_zone                              = var.availability_zone_1
 
   tags = {
     Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
@@ -73,7 +73,7 @@ resource "aws_subnet" "subnet_6" {
     "kubernetes.io/role/elb"                  = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_4" {
@@ -85,7 +85,7 @@ resource "aws_subnet" "subnet_4" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "${var.availability_zone_1}"
+  availability_zone                              = var.availability_zone_1
 
   tags = {
     Name                                      = "sydney-production-vpc-private-${var.availability_zone_1}"
@@ -99,7 +99,7 @@ resource "aws_subnet" "subnet_4" {
     "kubernetes.io/role/internal-elb"         = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_8" {
@@ -111,7 +111,7 @@ resource "aws_subnet" "subnet_8" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "ap-southeast-2b"
+  availability_zone                              = "ap-southeast-2b"
 
   tags = {
     Name                                      = "sydney-production-vpc-public-ap-southeast-2b"
@@ -125,7 +125,7 @@ resource "aws_subnet" "subnet_8" {
     "kubernetes.io/role/elb"                  = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_5" {
@@ -137,7 +137,7 @@ resource "aws_subnet" "subnet_5" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
-  availability_zone = "ap-southeast-2b"
+  availability_zone                              = "ap-southeast-2b"
 
   tags = {
     Name                                      = "sydney-production-vpc-private-ap-southeast-2b"
@@ -151,7 +151,7 @@ resource "aws_subnet" "subnet_5" {
     "kubernetes.io/role/internal-elb"         = "1"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_subnet" "subnet_9" {
@@ -163,7 +163,7 @@ resource "aws_subnet" "subnet_9" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  vpc_id                                         = "${aws_vpc.vpc_2.id}"
+  vpc_id                                         = aws_vpc.vpc_2.id
 }
 
 resource "aws_subnet" "subnet_1" {
@@ -175,7 +175,7 @@ resource "aws_subnet" "subnet_1" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  vpc_id                                         = "${aws_vpc.vpc_2.id}"
+  vpc_id                                         = aws_vpc.vpc_2.id
 }
 
 resource "aws_subnet" "subnet-2" {
@@ -187,5 +187,5 @@ resource "aws_subnet" "subnet-2" {
   ipv6_native                                    = "false"
   map_public_ip_on_launch                        = "true"
   private_dns_hostname_type_on_launch            = "ip-name"
-  vpc_id                                         = "${aws_vpc.vpc_2.id}"
+  vpc_id                                         = aws_vpc.vpc_2.id
 }

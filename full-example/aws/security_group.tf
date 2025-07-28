@@ -36,7 +36,7 @@ resource "aws_security_group" "application-db-1" {
     Name = "application-db"
   }
 
-  vpc_id = "${aws_vpc.vpc_2.id}"
+  vpc_id = aws_vpc.vpc_2.id
 }
 
 resource "aws_security_group" "production_cluster_sg" {
@@ -51,7 +51,7 @@ resource "aws_security_group" "production_cluster_sg" {
     Name = "sydney-production-cluster"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_security_group" "production_node_sg_1" {
@@ -163,7 +163,7 @@ resource "aws_security_group" "production_node_sg_1" {
     "kubernetes.io/cluster/sydney-production" = "owned"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_security_group" "eks_cluster_production_sg_2" {
@@ -196,7 +196,7 @@ resource "aws_security_group" "eks_cluster_production_sg_2" {
     "kubernetes.io/cluster/sydney-production" = "owned"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_security_group" "k8s_elb_sg_3" {
@@ -244,7 +244,7 @@ resource "aws_security_group" "k8s_elb_sg_3" {
     "kubernetes.io/cluster/sydney-production" = "owned"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_security_group" "rancher_machine_sg_4" {
@@ -341,7 +341,7 @@ resource "aws_security_group" "rancher_machine_sg_4" {
     Name = "rancher-machine"
   }
 
-  vpc_id = "${aws_vpc.vpc_2.id}"
+  vpc_id = aws_vpc.vpc_2.id
 }
 
 resource "aws_security_group" "workers_eks_node_group_sg_5" {
@@ -414,5 +414,5 @@ resource "aws_security_group" "workers_eks_node_group_sg_5" {
     Name = "workers-eks-node-group"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }

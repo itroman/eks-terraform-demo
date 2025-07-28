@@ -3,8 +3,8 @@ resource "aws_vpc_peering_connection" "pcx" {
     allow_remote_vpc_dns_resolution = "false"
   }
 
-  peer_owner_id = "${account_id}"
-  peer_vpc_id   = "${aws_vpc.vpc_1.id}"
+  peer_owner_id = account_id
+  peer_vpc_id   = aws_vpc.vpc_1.id
   auto_accept   = true
 
   requester {
@@ -19,5 +19,5 @@ resource "aws_vpc_peering_connection" "pcx" {
     Name = "sydney-prod-eks"
   }
 
-  vpc_id = "${aws_vpc.vpc_2.id}"
+  vpc_id = aws_vpc.vpc_2.id
 }

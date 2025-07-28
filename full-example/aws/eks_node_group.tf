@@ -1,7 +1,7 @@
 resource "aws_eks_node_group" "workers" {
   ami_type       = "BOTTLEROCKET_x86_64"
   capacity_type  = "ON_DEMAND"
-  cluster_name   = "${aws_eks_cluster.production.name}"
+  cluster_name   = aws_eks_cluster.production.name
   disk_size      = "20"
   instance_types = ["m5.xlarge"]
 

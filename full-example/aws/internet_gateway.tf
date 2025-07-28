@@ -7,9 +7,9 @@ resource "aws_internet_gateway" "igw" {
     Name = "${var.project_tag}-vpc"
   }
 
-  vpc_id = "${aws_vpc.vpc_1.id}"
+  vpc_id = aws_vpc.vpc_1.id
 }
 
 resource "aws_internet_gateway" "igw_2" {
-  vpc_id = "${aws_vpc.vpc_2.id}"
+  vpc_id = aws_vpc.vpc_2.id
 }
