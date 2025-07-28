@@ -6,7 +6,7 @@ resource "aws_eks_node_group" "demo_node_group" {
   instance_types = [var.instance_type]
 
   node_group_name = "Demo-group"
-  node_role_arn = aws_iam_role.demo1.name
+  node_role_arn   = aws_iam_role.demo1.name
 
   scaling_config {
     desired_size = "1"

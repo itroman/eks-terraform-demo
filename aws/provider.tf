@@ -10,7 +10,7 @@ terraform {
     }
   }
 
-	backend "s3" {
+  backend "s3" {
     bucket         = "demo-2025-07-23-bucket"
     key            = "demo/terraform.tfstate"
     region         = "us-east-1"

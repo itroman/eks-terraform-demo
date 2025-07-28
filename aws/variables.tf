@@ -5,41 +5,41 @@ variable "region" {
 }
 
 variable "cluster_name" {
-  type = string
+  type    = string
   default = "demo_cluster"
 }
 
 variable "subnets" {
-  type = list
-  default = ["subnet-42ac3025","subnet-42ac3025"]
+  type    = list(any)
+  default = ["subnet-42ac3025", "subnet-42ac3025"]
 }
 
 variable "ami" {
-  type =  string
+  type    = string
   default = "BOTTLEROCKET_x86_64"
 }
 
 variable "instance_type" {
-  type = string
+  type    = string
   default = "t2.medium"
 }
 
 variable "kube_proxy" {
-  type = string
+  type    = string
   default = "v1.33.0-eksbuild.2"
 }
 
 variable "core_dns" {
-  type = string
+  type    = string
   default = "v1.12.2-eksbuild.4"
 }
 
 variable "ebs_csi" {
-  type = string
+  type    = string
   default = "v1.17.0-eksbuild.1"
 }
 
 variable "vpc_cni" {
-  type = string
+  type    = string
   default = "v1.19.5-eksbuild.3"
 }
