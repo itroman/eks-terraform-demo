@@ -31,7 +31,7 @@ jobs:
 
       - name: Terraform TFLint Check
         id: tflint
-        run: tflint --enable-rule=terraform_standard --enable-rule=terraform_sensitive_attributes --enable-rule=terraform_naming_conventions # Example rules, customize as needed
+        run: tflint --enable-rule=terraform_standard --enable-rule=terraform_sensitive_attributes --enable-rule=terraform_naming_convention # Example rules, customize as needed
         continue-on-error: true
 
       - name: Report Formatting Issues
