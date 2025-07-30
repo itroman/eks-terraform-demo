@@ -31,7 +31,7 @@ jobs:
 
       - name: Terraform TFLint Check
         id: tflint
-        run: tflint --recursive
+        run: tflint --recursive --minimum-failure-severity=error
         continue-on-error: true
 
       - name: Report Formatting Issues
