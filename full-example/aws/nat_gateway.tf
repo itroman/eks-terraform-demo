@@ -5,10 +5,10 @@ resource "aws_nat_gateway" "nat_1" {
   subnet_id         = aws_subnet.subnet_6.id
 
   tags = {
-    Name = "${var.project_tag}-vpc-${var.availability_zone_1}"
+    Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
   }
 
   tags_all = {
-    Name = "${var.project_tag}-vpc-${var.availability_zone_1}"
+    Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
   }
 }

@@ -7,25 +7,20 @@ resource "aws_db_instance" "production" {
   backup_window                         = "10:01-10:31"
   copy_tags_to_snapshot                 = "false"
   customer_owned_ip_enabled             = "false"
-  db_name                               = "application"
+  db_name                               = var.db_name
   db_subnet_group_name                  = aws_db_subnet_group.application.name
   dedicated_log_volume                  = "false"
   deletion_protection                   = "true"
-  engine                                = "postgres"
-  engine_lifecycle_support              = "open-source-rds-extended-support"
-  engine_version                        = "17.5"
+  engine                                = var.db_engine
+  engine_version                        = var.db_engine_version
   iam_database_authentication_enabled   = "false"
-  identifier                            = "syd-production-hedb"
-  instance_class                        = "db.t3.small"
+  instance_class                        = var.db_instance_type
   iops                                  = "3000"
-  license_model                         = "postgresql-license"
   maintenance_window                    = "fri:07:17-fri:07:47"
   max_allocated_storage                 = "0"
   monitoring_interval                   = "0"
   multi_az                              = "false"
   network_type                          = "IPV4"
-  option_group_name                     = "default:postgres-17"
-  parameter_group_name                  = "nc-pgsql-17-no-ssl"
   performance_insights_enabled          = "true"
   performance_insights_retention_period = "7"
   port                                  = "5432"
@@ -34,12 +29,12 @@ resource "aws_db_instance" "production" {
   storage_throughput                    = "125"
   storage_type                          = "gp3"
   manage_master_user_password           = true
-  username                              = "application"
+  username                              = var.db_username
   skip_final_snapshot                   = true
   vpc_security_group_ids                = ["${aws_security_group.application-db-1.id}"]
 }
 
-resource "aws_db_instance" "production-gpdb" {
+resource "aws_db_instance" "dev" {
   allocated_storage                     = "50"
   auto_minor_version_upgrade            = "true"
   availability_zone                     = var.availability_zone_2
@@ -48,25 +43,20 @@ resource "aws_db_instance" "production-gpdb" {
   backup_window                         = "10:01-10:31"
   copy_tags_to_snapshot                 = "false"
   customer_owned_ip_enabled             = "false"
-  db_name                               = "application"
+  db_name                               = var.db_name
   db_subnet_group_name                  = aws_db_subnet_group.application.name
   dedicated_log_volume                  = "false"
   deletion_protection                   = "true"
-  engine                                = "postgres"
-  engine_lifecycle_support              = "open-source-rds-extended-support"
-  engine_version                        = "17.5"
+  engine                                = var.db_engine
+  engine_version                        = var.db_engine_version
   iam_database_authentication_enabled   = "false"
-  identifier                            = "syd-production-gpdb"
-  instance_class                        = "db.t3.small"
+  instance_class                        = var.db_instance_type
   iops                                  = "3000"
-  license_model                         = "postgresql-license"
   maintenance_window                    = "fri:07:17-fri:07:47"
   max_allocated_storage                 = "0"
   monitoring_interval                   = "0"
   multi_az                              = "false"
   network_type                          = "IPV4"
-  option_group_name                     = "default:postgres-17"
-  parameter_group_name                  = "nc-pgsql-17-no-ssl"
   performance_insights_enabled          = "true"
   performance_insights_retention_period = "7"
   port                                  = "5432"
@@ -75,7 +65,7 @@ resource "aws_db_instance" "production-gpdb" {
   storage_throughput                    = "125"
   storage_type                          = "gp3"
   manage_master_user_password           = true
-  username                              = "application"
+  username                              = var.db_username
   skip_final_snapshot                   = true
   vpc_security_group_ids                = ["${aws_security_group.application-db-1.id}"]
 }

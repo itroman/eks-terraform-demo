@@ -16,13 +16,13 @@ resource "aws_iam_role" "production-cluster" {
 POLICY
 
   inline_policy {
-    name   = "sydney-production-cluster"
-    policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogGroup\"],\"Effect\":\"Deny\",\"Resource\":\"arn:aws:logs:${var.region}:${account_id}:log-group:/aws/eks/sydney-production/cluster\"}]}"
+    name   = "${var.eks_cluster_name}-cluster"
+    policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogGroup\"],\"Effect\":\"Deny\",\"Resource\":\"arn:aws:logs:${var.region}:${account_id}:log-group:/aws/eks/${var.eks_cluster_name}/cluster\"}]}"
   }
 
   managed_policy_arns  = ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy", "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"]
   max_session_duration = "3600"
-  name_prefix          = "sydney-production-cluster-"
+  name_prefix          = "${var.eks_cluster_name}-cluster-"
   path                 = "/"
 }
 

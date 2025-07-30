@@ -10,15 +10,15 @@ resource "aws_subnet" "subnet_3" {
   availability_zone                              = var.availability_zone_1
 
   tags = {
-    Name                                      = "${var.project_tag}-vpc-private-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.project_tag}-vpc-private-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   tags_all = {
-    Name                                      = "${var.project_tag}-vpc-private-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.project_tag}-vpc-private-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -36,15 +36,15 @@ resource "aws_subnet" "subnet_7" {
   availability_zone                              = var.availability_zone_1
 
   tags = {
-    Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   tags_all = {
-    Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -62,15 +62,15 @@ resource "aws_subnet" "subnet_6" {
   availability_zone                              = var.availability_zone_1
 
   tags = {
-    Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   tags_all = {
-    Name                                      = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.project_tag}-vpc-public-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -88,15 +88,15 @@ resource "aws_subnet" "subnet_4" {
   availability_zone                              = var.availability_zone_1
 
   tags = {
-    Name                                      = "sydney-production-vpc-private-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-private-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   tags_all = {
-    Name                                      = "sydney-production-vpc-private-${var.availability_zone_1}"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-private-${var.availability_zone_1}"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -114,15 +114,15 @@ resource "aws_subnet" "subnet_8" {
   availability_zone                              = "ap-southeast-2b"
 
   tags = {
-    Name                                      = "sydney-production-vpc-public-ap-southeast-2b"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-public-ap-southeast-2b"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   tags_all = {
-    Name                                      = "sydney-production-vpc-public-ap-southeast-2b"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/elb"                  = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-public-ap-southeast-2b"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                        = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -140,15 +140,15 @@ resource "aws_subnet" "subnet_5" {
   availability_zone                              = "ap-southeast-2b"
 
   tags = {
-    Name                                      = "sydney-production-vpc-private-ap-southeast-2b"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-private-ap-southeast-2b"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   tags_all = {
-    Name                                      = "sydney-production-vpc-private-ap-southeast-2b"
-    "kubernetes.io/cluster/sydney-production" = "shared"
-    "kubernetes.io/role/internal-elb"         = "1"
+    Name                                            = "${var.eks_cluster_name}-vpc-private-ap-southeast-2b"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"               = "1"
   }
 
   vpc_id = aws_vpc.vpc_1.id

@@ -7,11 +7,11 @@ resource "aws_vpc" "vpc_1" {
   instance_tenancy                     = "default"
 
   tags = {
-    Name = "sydney-production-vpc"
+    Name = "${var.eks_cluster_name}-vpc"
   }
 
   tags_all = {
-    Name = "sydney-production-vpc"
+    Name = "${var.eks_cluster_name}-vpc"
   }
 }
 

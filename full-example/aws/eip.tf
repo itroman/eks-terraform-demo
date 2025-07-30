@@ -4,11 +4,11 @@ resource "aws_eip" "eipalloc" {
   public_ipv4_pool     = "amazon"
 
   tags = {
-    Name = "sydney-production-vpc-${var.availability_zone_1}"
+    Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
   }
 
   tags_all = {
-    Name = "sydney-production-vpc-${var.availability_zone_1}"
+    Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
   }
 
 }

@@ -12,10 +12,10 @@ resource "aws_eks_cluster" "production" {
     service_ipv4_cidr = "10.100.0.0/16"
   }
 
-  name     = "sydney-production"
+  name     = var.eks_cluster_name
   role_arn = "arn:aws:iam::${account_id}:role/${aws_iam_role.production-cluster.id}"
 
-  version = "1.30"
+  version = var.k8s_controlplane_version
 
   vpc_config {
     endpoint_private_access = "false"

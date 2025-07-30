@@ -12,11 +12,11 @@ resource "aws_vpc_peering_connection" "pcx" {
   }
 
   tags = {
-    Name = "sydney-prod-eks"
+    Name = "${var.eks_cluster_name}-eks"
   }
 
   tags_all = {
-    Name = "sydney-prod-eks"
+    Name = "${var.eks_cluster_name}-eks"
   }
 
   vpc_id = aws_vpc.vpc_2.id

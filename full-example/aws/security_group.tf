@@ -41,14 +41,14 @@ resource "aws_security_group" "application-db-1" {
 
 resource "aws_security_group" "production_cluster_sg" {
   description = "EKS cluster security group"
-  name_prefix = "sydney-production-cluster-"
+  name_prefix = "${var.eks_cluster_name}-cluster-"
 
   tags = {
-    Name = "sydney-production-cluster"
+    Name = "${var.eks_cluster_name}-cluster"
   }
 
   tags_all = {
-    Name = "sydney-production-cluster"
+    Name = "${var.eks_cluster_name}-cluster"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -154,13 +154,13 @@ resource "aws_security_group" "production_node_sg_1" {
   name_prefix = "${var.project_tag}-node-"
 
   tags = {
-    Name                                      = "${var.project_tag}-node"
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    Name                                            = "${var.project_tag}-node"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   tags_all = {
-    Name                                      = "${var.project_tag}-node"
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    Name                                            = "${var.project_tag}-node"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -184,16 +184,16 @@ resource "aws_security_group" "eks_cluster_production_sg_2" {
     to_port   = "0"
   }
 
-  name = "eks-cluster-sg-sydney-production-2055894760"
+  name = "eks-cluster-sg-${var.eks_cluster_name}-2055894760"
 
   tags = {
-    Name                                      = "eks-cluster-sg-sydney-production-2055894760"
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    Name                                            = "eks-cluster-sg-${var.eks_cluster_name}-2055894760"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   tags_all = {
-    Name                                      = "eks-cluster-sg-sydney-production-2055894760"
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    Name                                            = "eks-cluster-sg-${var.eks_cluster_name}-2055894760"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -237,11 +237,11 @@ resource "aws_security_group" "k8s_elb_sg_3" {
   name_prefix = "k8s-elb-a4e963"
 
   tags = {
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   tags_all = {
-    "kubernetes.io/cluster/sydney-production" = "owned"
+    "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
   vpc_id = aws_vpc.vpc_1.id

@@ -10,11 +10,11 @@ resource "aws_route_table" "rtb_3" {
   }
 
   tags = {
-    Name = "${var.project_tag}-vpc-public"
+    Name = "${var.eks_cluster_name}-vpc-public"
   }
 
   tags_all = {
-    Name = "${var.project_tag}-vpc-public"
+    Name = "${var.eks_cluster_name}-vpc-public"
   }
 
   vpc_id = aws_vpc.vpc_1.id
@@ -27,11 +27,11 @@ resource "aws_route_table" "rtb_4" {
   }
 
   tags = {
-    Name = "${var.project_tag}-vpc-private"
+    Name = "${var.eks_cluster_name}-vpc-private"
   }
 
   tags_all = {
-    Name = "${var.project_tag}-vpc-private"
+    Name = "${var.eks_cluster_name}-vpc-private"
   }
 
   vpc_id = aws_vpc.vpc_1.id

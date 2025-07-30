@@ -1,10 +1,10 @@
 resource "aws_internet_gateway" "igw" {
   tags = {
-    Name = "${var.project_tag}-vpc"
+    Name = "${var.eks_cluster_name}-vpc"
   }
 
   tags_all = {
-    Name = "${var.project_tag}-vpc"
+    Name = "${var.eks_cluster_name}-vpc"
   }
 
   vpc_id = aws_vpc.vpc_1.id

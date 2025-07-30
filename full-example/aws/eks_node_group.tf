@@ -1,9 +1,9 @@
 resource "aws_eks_node_group" "workers" {
-  ami_type       = "BOTTLEROCKET_x86_64"
+  ami_type       = var.eks_ami
   capacity_type  = "ON_DEMAND"
   cluster_name   = aws_eks_cluster.production.name
   disk_size      = "20"
-  instance_types = ["m5.xlarge"]
+  instance_types = var.eks_instance_type
 
   node_group_name_prefix = "workers-"
   node_role_arn          = "arn:aws:iam::${account_id}:role/${aws_iam_role.EKSNodeGroupRole.id}" #fix this first
@@ -17,16 +17,16 @@ resource "aws_eks_node_group" "workers" {
   subnet_ids = ["${aws_subnet.subnet_3.id}", "${aws_subnet.subnet_4.id}", "${aws_subnet.subnet_5.id}"]
 
   tags = {
-    Name = "workers"
+    Name = var.eks_node_group_tags[0]
   }
 
   tags_all = {
-    Name = "workers"
+    Name = var.eks_node_group_tags[0]
   }
 
   update_config {
     max_unavailable = "1"
   }
 
-  version = "1.30"
+  version = var.k8s_worker_version
 }
