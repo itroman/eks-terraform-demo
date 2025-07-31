@@ -1,14 +1,7 @@
-resource "aws_nat_gateway" "nat_1" {
-  allocation_id     = aws_eip.eipalloc.id #race condition is causing this to get associated before nat creation
-  connectivity_type = "public"
-  private_ip        = "168.32.4.218"
-  subnet_id         = aws_subnet.subnet_6.id
-
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.eipalloc.id #race condition is causing this to get associated before nat creation
+  subnet_id     = element(aws_subnet.public_subnet.*.id, 0)
   tags = {
-    Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
-  }
-
-  tags_all = {
     Name = "${var.eks_cluster_name}-vpc-${var.availability_zone_1}"
   }
 }

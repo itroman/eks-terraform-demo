@@ -36,7 +36,7 @@ resource "aws_security_group" "application-db-1" {
     Name = "application-db"
   }
 
-  vpc_id = aws_vpc.vpc_2.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_security_group" "production_cluster_sg" {
@@ -51,7 +51,7 @@ resource "aws_security_group" "production_cluster_sg" {
     Name = "${var.eks_cluster_name}-cluster"
   }
 
-  vpc_id = aws_vpc.vpc_1.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_security_group" "production_node_sg_1" {
@@ -163,7 +163,7 @@ resource "aws_security_group" "production_node_sg_1" {
     "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
-  vpc_id = aws_vpc.vpc_1.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_security_group" "eks_cluster_production_sg_2" {
@@ -196,7 +196,7 @@ resource "aws_security_group" "eks_cluster_production_sg_2" {
     "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
-  vpc_id = aws_vpc.vpc_1.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_security_group" "k8s_elb_sg_3" {
@@ -244,7 +244,7 @@ resource "aws_security_group" "k8s_elb_sg_3" {
     "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"
   }
 
-  vpc_id = aws_vpc.vpc_1.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_security_group" "rancher_machine_sg_4" {
@@ -252,10 +252,10 @@ resource "aws_security_group" "rancher_machine_sg_4" {
 
   egress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "0"
-    protocol    = "-1"
-    self        = "false"
-    to_port     = "0"
+    from_port = "0"
+    protocol  = "-1"
+    self      = "false"
+    to_port   = "0"
   }
 
   ingress {
@@ -269,79 +269,43 @@ resource "aws_security_group" "rancher_machine_sg_4" {
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "-1"
-    protocol    = "icmp"
-    self        = "false"
-    to_port     = "-1"
+    from_port = "-1"
+    protocol  = "icmp"
+    self      = "false"
+    to_port   = "-1"
   }
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "22"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "22"
+    from_port = "22"
+    protocol  = "tcp"
+    self      = "false"
+    to_port   = "22"
   }
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "2376"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "2376"
+    from_port = "2376"
+    protocol  = "tcp"
+    self      = "false"
+    to_port   = "2376"
   }
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "3000"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "3000"
+    from_port = "3000"
+    protocol  = "tcp"
+    self      = "false"
+    to_port   = "3000"
   }
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "443"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "443"
+    from_port = "443"
+    protocol  = "tcp"
+    self      = "false"
+    to_port   = "443"
   }
-
-  ingress {
-    cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "4500"
-    protocol    = "udp"
-    self        = "false"
-    to_port     = "4500"
-  }
-
-  ingress {
-    cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "500"
-    protocol    = "udp"
-    self        = "false"
-    to_port     = "500"
-  }
-
-  ingress {
-    cidr_blocks = ["0.0.0.0/0"]
-    from_port   = "80"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "80"
-  }
-
-  name = "rancher-machine"
-
-  tags = {
-    Name = "rancher-machine"
-  }
-
-  tags_all = {
-    Name = "rancher-machine"
-  }
-
-  vpc_id = aws_vpc.vpc_2.id
 }
 
 resource "aws_security_group" "workers_eks_node_group_sg_5" {
@@ -414,5 +378,5 @@ resource "aws_security_group" "workers_eks_node_group_sg_5" {
     Name = "workers-eks-node-group"
   }
 
-  vpc_id = aws_vpc.vpc_1.id
+  vpc_id = aws_vpc.vpc.id
 }

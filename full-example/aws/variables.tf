@@ -19,6 +19,11 @@ variable "availability_zone_1" {
 variable "availability_zone_2" {
   default = "us-east-2b"
 }
+
+variable "availability_zones" {
+  type    = list(any)
+  default = ["us-east-2a", "us-east-2b"]
+}
 #eks variables
 
 variable "eks_cluster_name" {
@@ -110,4 +115,23 @@ variable "db_subnet_description" {
 variable "db_subnet_name" {
   type    = string
   default = "application"
+}
+
+#vpc variables
+
+variable "vpc_cidr" {
+  type    = string
+  default = "168.32.0.0/16"
+}
+
+#subnet variables
+
+variable "public_subnets_cidr" {
+  type    = list(any)
+  default = ["168.32.1.0/20", "168.32.2.0/20", "168.32.3.0/20"]
+}
+
+variable "private_subnets_cidr" {
+  type    = list(any)
+  default = ["168.32.4.0/20", "168.32.5.0/20", "168.32.6.0/20"]
 }
